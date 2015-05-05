@@ -1,0 +1,24 @@
+// Theming for https://atom.io/packages/term
+.term > .terminal {
+  padding: 0px;
+  border-color: darken(#4f606c, 1);
+
+  // Color fixes
+  background: #4f606c !important;
+
+  @colors: #3465a4, #75507b, #4e9a06, #06989a, #c4a000;
+  & > div {
+      .-(@i: length(@colors)) when (@i > 0) {
+          @color: extract(@colors, @i);
+          span[style*="color:@{color}"] {
+            color: lighten(@color, 20) !important;
+          }
+          .-((@i - 1));
+      } .-;
+  }
+
+  // Fix wrapping in first line
+  & > div > span:first-child {
+    white-space: nowrap;
+  }
+}
