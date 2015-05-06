@@ -8,13 +8,13 @@
 
   @colors: #3465a4, #75507b, #4e9a06, #06989a, #c4a000;
   & > div {
-      .-(@i: length(@colors)) when (@i > 0) {
-          @color: extract(@colors, @i);
-          span[style*="color:@{color}"] {
-            color: lighten(@color, 20) !important;
-          }
-          .-((@i - 1));
-      } .-;
+    .-(@i: length(@colors)) when (@i > 0) {
+      @color: extract(@colors, @i);
+      span[style*="color:@{color}"] {
+        color: lighten(@color, 20) !important;
+      }
+      .-((@i - 1));
+    } .-;
   }
 
   // Fix wrapping in first line

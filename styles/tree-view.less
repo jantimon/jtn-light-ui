@@ -2,50 +2,50 @@
 @import "ui-variables";
 
 .tree-view {
-	font-size: @font-size;
-	background: @tree-view-background-color;
+  font-size: @font-size;
+  background: @tree-view-background-color;
 
-	.selected:before {
-		background: #d0d0d0;
-	}
+  .selected:before {
+    background: #d0d0d0;
+  }
 }
 
 .tree-view-resizer {
-	.tree-view-resize-handle {
-		width: 8px;
-	}
+  .tree-view-resize-handle {
+    width: 8px;
+  }
 }
 
 // Folder Icon
 .icon-file-directory:before {
-	.jtn-light-ui-icon-folder();
+  .jtn-light-ui-icon-folder();
 }
 
 .list-tree .icon:before {
-	color: #516a73;
-	opacity: 0.8;
+  color: #516a73;
+  opacity: 0.8;
 }
 
 
 // (>) and (v) folder symbol
 .list-tree.has-collapsable-children .list-nested-item {
-	& > .list-item::before,
+  & > .list-item::before,
   &.collapsed > .list-item::before {
-		color: #516a73;
-		opacity: 0.5;
-	}
+    color: #516a73;
+    opacity: 0.5;
+  }
 }
 .focusable-panel {
-	opacity: 1;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#e8ecf1), to(#ebebeb));
-	background-image: -webkit-linear-gradient(top, #e8ecf1, #ebebeb);
+  opacity: 1;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e8ecf1), to(#ebebeb));
+  background-image: -webkit-linear-gradient(top, #e8ecf1, #ebebeb);
 
-	&:focus {
-		background-image: -webkit-gradient(linear, left top, left bottom, from(#e8ecf1),to(#d1d8e0));
-		background-image: -webkit-linear-gradient(top, #e8ecf1, #d1d8e0);
+  &:focus {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#e8ecf1),to(#d1d8e0));
+    background-image: -webkit-linear-gradient(top, #e8ecf1, #d1d8e0);
 
-		.selected:before {
-			background: @background-color-selected;
-		}
-	}
+    .selected:before {
+      background: @background-color-selected;
+    }
+  }
 }
