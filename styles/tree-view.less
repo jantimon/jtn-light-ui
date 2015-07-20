@@ -1,12 +1,42 @@
 @import "../icons/jtn-light-ui.less";
 @import "ui-variables";
 
+.icon-overwrite(@args...) {
+  @rules: extract(@args, length(@args));
+  .-(@i: length(@args) - 1) when (@i > 0) {
+        @file: extract(@args, @i);
+        html .tree-view atom-pane .tab-bar .tab .title[data-path][data-name$="@{file}"]:before,
+        html atom-pane .tab-bar .tab .title[data-path][data-name$="@{file}"]:before,
+        html .tree-view .icon-file-text[data-name$="@{file}"]:before {
+          @rules();
+        }
+        .-((@i - 1));
+    } .-;
+}
+
+.svg-icon(@filename) {
+  & {
+    background: url(@filename);
+    background-size: 100% 100%;
+    content: " ";
+    min-width: 16px;
+    min-height: 16px;
+    display:inline-block;
+  }
+}
+
+
 .tree-view {
   font-size: @font-size;
   background: @tree-view-background-color;
 
   .selected:before {
     background: #d0d0d0;
+  }
+
+  // Make hidden files less important
+  .icon-file-text[data-name^="."] {
+    opacity: 0.65;
   }
 }
 
@@ -20,6 +50,17 @@
 .icon-file-directory:before {
   .jtn-light-ui-icon-folder();
 }
+
+// JS icon
+.icon-overwrite('.js' {
+  .svg-icon('atom://jtn-light-ui/icons/src/js.svg');
+});
+.icon-overwrite('.jsx', {
+  .svg-icon('atom://jtn-light-ui/icons/src/jsx.svg');
+});
+.icon-overwrite('.html', {
+  .svg-icon('atom://jtn-light-ui/icons/src/html.svg');
+});
 
 .list-tree .icon:before {
   color: #516a73;
